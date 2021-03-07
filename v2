@@ -1,0 +1,74 @@
+import math
+
+
+
+
+def f(x):
+
+
+
+    cube = x ** 3
+    square = x ** 2
+    sqrt = x ** 1/2
+    cbrt = x ** 1/3
+    e = 2.71828
+  #  ln = math.log(x)
+  #  log10 = math.log(x, 10)
+    pi = 3.1415926535
+    sine = math.sin(x)
+    cosine = math.cos(x)
+    tangent = (sine / cosine)
+    csc = 1 / sine
+    sec = 1 / cosine
+    cot = (cosine/sine)
+
+
+
+    global g
+    g = ((3 * square) - cube + 3)
+
+    return g
+
+
+
+def derviative(x):
+    h = 0.000001
+    numerator = f(x + h) - f(x)
+
+    denominator = h
+    global m
+    m = numerator / denominator
+
+    split_m = str(m).split('.')
+    int_m = int(split_m[0])
+    dec_m = float('0.' + split_m[1])
+    if dec_m < 0.001 or dec_m < 0.9999999:
+        m = round(m, 2)
+    print("-------Slope--of--Tangent------")
+    print(m)
+
+
+def slope(x):
+    y = g
+    print("------------y value------------")
+    print(y)
+
+    b = y - (m * x)
+
+    print("----------y intercept----------")
+    print(b)
+
+
+    print("-----Equation--of--Tangent-----")
+    if b < 0:
+          print(("y = "),(m),("x"),(b))
+    elif b >= 0:
+        print(("y = "),(m),("x +"),(b))
+
+    print("-------------------------------")
+
+#main
+for x in range(10):
+    x = float(input("Enter x Value: "))
+    derviative(x)
+    slope(x)
